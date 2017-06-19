@@ -1,0 +1,83 @@
+.nav
+  display: flex
+  align-items: center
+
+.nav-toggler
+  margin-left: auto
+  margin-right: 1rem
+  position: relative
+  width: auto
+  transition: all .7s ease
+  .bar
+    display: block
+    height: 5px
+    width: 40px
+    border-radius: 10px
+    background: $dark
+    margin: 5px auto
+    transition: all .3s ease
+  .middle
+    margin: 0 auto
+
+  &.is-open .top
+    transform: translateY(8px) rotateZ(225deg)
+
+
+  &.is-open .bottom
+    transform: translateY(-12px) rotateZ(-225deg)
+
+
+  &.is-open .middle
+    width: 0
+
+
+.main-nav
+  padding-top: 2em
+  display: none
+  &.is-open
+    display: block
+    opacity: 1
+    transition: 1s all ease-in-out
+    transform: translateX(0)
+  .nav-list
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+  .nav-item
+    width: 100%
+    height: 3em
+  a
+    width: 100%
+    cursor: pointer
+    display: flex
+    font-size: 1.2em
+    align-items: center
+    justify-content: center
+    text-decoration: none
+    font-weight: $font-light
+    color: $dark
+    height: 100%
+    transition: 0.3s all ease-in-out
+    &:hover,
+    &:focus
+      color: $primary
+  @media (min-width: 769px)
+    display: block
+    //border: 1px solid
+    padding: 0
+    margin: 3em 0
+
+
+    .nav-list
+      flex-direction: row
+      width: 90%
+      margin: 0 auto
+      border-top: 1px solid #a3a3a3
+      border-bottom: 1px solid #a3a3a3
+    a
+      white-space: nowrap
+  @media (min-width: 1200px)
+    .nav-list
+      width: 70%

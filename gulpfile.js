@@ -34,7 +34,7 @@ gulp.task('sass', function () {
         autoprefixer({ browsers: ['last 2 version'] }),
         flexbugsFixes
     ];
-    return gulp.src('src/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
+    return gulp.src('src/scss/**/*.sass') // Gets all files ending with .scss in app/scss and children dirs
         .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
         .pipe(postcss(plugins))
         .pipe(gulp.dest('src/css')) // Outputs it in the css folder
@@ -53,7 +53,7 @@ gulp.task('vendor', function () {
 });
 // Watchers
 gulp.task('watch', function () {
-    gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/**/*.scss'], ['sass']);
+    gulp.watch('src/scss/**/*.sass', ['sass']);
     gulp.watch('src/*.html', browserSync.reload);
     gulp.watch('src/js/**/*.js', browserSync.reload);
 });
