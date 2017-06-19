@@ -43,6 +43,17 @@ gulp.task('sass', function () {
         }));
 });
 
+gulp.task("sass:build", function () {
+    var plugins = [
+        autoprefixer({ browsers: ['last 2 version'] }),
+        flexbugsFixes
+    ];
+    return gulp.src('src/scss/**/*.sass') // Gets all files ending with .scss in app/scss and children dirs
+            .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
+            .pipe(postcss(plugins))
+            .pipe(gulp.dest('src/css'))
+});
+
 // Just moves the bootstrap js to src/js folder
 gulp.task('vendor', function () {
     return gulp.src([
@@ -67,9 +78,6 @@ gulp.task('useref', function () {
     return gulp.src('src/*.html')
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulpIf('*.css', uncss({
-            html: ['src/**/*.html']
-        })))
         .pipe(gulpIf('*.css', cssnano()))
         .pipe(uncache())
         .pipe(gulp.dest('dist'));
@@ -114,8 +122,8 @@ gulp.task('default', function (callback) {
 gulp.task('build', function (callback) {
     runSequence(
         'clean:dist',
-        'sass',
-        ['useref', 'images', 'fonts'],
+        'sass:build',
+        ['useref','images', 'fonts'],
         callback
     )
 });

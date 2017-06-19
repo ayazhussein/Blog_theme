@@ -1,4 +1,3 @@
-<!DOCTYPE html/>
 <html >
     <head >
         <meta charset="UTF-8" >
@@ -10,9 +9,6 @@
               rel="stylesheet" >
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
-        <!--build:css css/bootstrap.min.css-->
-
-        <!--endbuild-->
         <!--uncache-->
         <!--build:css css/styles.min.css-->
         <link rel="stylesheet" href="css/style.css" >
@@ -119,13 +115,18 @@
                 </div >
             </aside >
         </div >
-        <!-- JAVASCRIPT
-        ================== -->
-        <!--build:js js/main.min.js -->
-        <script src="js/jquery.min.js" ></script >
-        <script src="js/tether.min.js" ></script >
-        <script src="js/bootstrap.min.js" ></script >
-        <script src="js/main.js" ></script >
+
+        <!--uncache-->
+        <!--build:js js/vendor.min.js -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/tether.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <!-- endbuild -->
+        <!--enduncache-->
+        <!--uncache-->
+        <!--build:js js/main.min.js -->
+        <script src="js/main.js"></script>
+        <!-- endbuild -->
+        <!--enduncache-->
     </body >
 </html >
